@@ -1,3 +1,4 @@
+// contain customer schema and validate customer
 const Joi = require('joi');
 const mongoose = require('mongoose')
 
@@ -21,7 +22,6 @@ const customerSchema = new mongoose.Schema({
 
 const Customer = mongoose.model('Customer', customerSchema)
 
-
 function validateCustomer(customer) {
     const schema = {
         name: Joi.string().min(4).required(),
@@ -30,7 +30,6 @@ function validateCustomer(customer) {
     };
     return Joi.validate(customer, schema);
 }
-
 
 exports.Customer = Customer;
 exports.validate = validateCustomer;
