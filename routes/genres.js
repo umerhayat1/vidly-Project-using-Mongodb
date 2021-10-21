@@ -1,3 +1,4 @@
+// const asyncMiddleware = require('../middleware/async')
 const auth = require('../middleware/auth')
 const admin = require('../middleware/admin')
 
@@ -7,7 +8,9 @@ const express = require('express');
 const router = express.Router();
 
 
+
 router.get('/', async (req, res) => {
+  throw new Error('could not get the genres')
   const genres = await Genre.find().sort('name')
   res.send(genres);
 });
