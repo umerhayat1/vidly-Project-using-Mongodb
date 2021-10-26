@@ -1,12 +1,12 @@
 const winston = require('winston')
-require('winston-mongodb')
+// require('winston-mongodb')
 require('express-async-errors')
 
 module.exports = function () {
-    winston.handleExceptions(       //dealing with uncaught exception
-        // new winston.transports.Console({ colorize: true, prettyPrint: true }),
-        new winston.transports.File({ filename: 'uncaughtExceptions.log' })
-    )
+    // winston.handleExceptions(       //dealing with uncaught exception
+    //     // new winston.transports.Console({ colorize: true, prettyPrint: true }),
+    //     new winston.transports.File({ filename: 'uncaughtExceptions.log' })
+    // )
     // throw new Error('Something Failed during startup')
 
     process.on('unhandledRejection', (ex) => {   //dealing with unhandled promise rejections
@@ -17,8 +17,8 @@ module.exports = function () {
     // p.then(() => console.log('Done'))
 
     winston.add(new winston.transports.File({ filename: 'logfile.log' }));   //logging errors in file
-    winston.add(new winston.transports.MongoDB({    //logging errors in Mongodb
-        db: 'mongodb://localhost/vidly',
-        level: 'info'
-    }));
+    // winston.add(new winston.transports.MongoDB({    //logging errors in Mongodb
+    //     db: 'mongodb://localhost/vidly',
+    //     level: 'info'
+    // }));
 }
