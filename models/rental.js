@@ -57,7 +57,6 @@ const rentalSchema = new mongoose.Schema({
 
 })
 
-
 const Rental = mongoose.model('Rental', rentalSchema)
 
 function validateRental(rental) {
